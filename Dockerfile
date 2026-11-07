@@ -22,8 +22,8 @@ COPY . .
 # Configurar Apache para Laravel
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
-RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/sites-available/*.conf
+RUN sed -ri 's#DocumentRoot /var/www/html#DocumentRoot /var/www/html/public#g' \
+    /etc/apache2/sites-available/000-default.conf
 
 # Permisos de Laravel
 RUN mkdir -p storage/framework/cache/data \
