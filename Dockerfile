@@ -18,9 +18,7 @@ WORKDIR /var/www/html
 # Copiar el proyecto Laravel
 COPY . .
 
-# Instalar dependencias
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
+# Instalar dependenciasRUN COMPOSER_PROCESS_TIMEOUT=600 composer install --no-dev --prefer-source --optimize-autoloader --no-interaction
 # Configurar Apache para Laravel
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
